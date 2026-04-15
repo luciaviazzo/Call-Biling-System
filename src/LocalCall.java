@@ -6,10 +6,6 @@ public class LocalCall extends Call{
             super(minutes, dateTime);
         }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
     @Override
     public double getCost() {
         DayOfWeek day = dateTime.getDayOfWeek();

@@ -1,35 +1,46 @@
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Bill {
     private Client client;
+    private int month;
+    private int year;
 
-    public Bill(Client client) {
+    public Bill(Client client, int month, int year) {
         this.client = client;
+        this.month = month;
+        this.year = year;
     }
 
-    // no va aca
-    public double localCost() {
+    private List<Call> getCallsOfMonth() {
         return client.getCalls().stream()
+                .filter(call -> call.getDateTime().getMonthValue() == month && call.getDateTime().getYear() == year)
+                .collect(Collectors.toList());
+    }
+
+    public double totalAmount() {
+        return localCost() + nationalAndInternationalCost() + client.getSusbscription();
+    }
+
+    public double localCost() {
+        return getCallsOfMonth().stream()
                 .filter(call -> call.getCallType() == CallType.LOCAL)
                 .mapToDouble(Call::getCost)
                 .sum();
     }
 
-    // no va aca
-    public double notLocalCost() {
-        return client.getCalls().stream()
+    public double nationalAndInternationalCost() {
+        return getCallsOfMonth().stream()
                 .filter(call -> call.getCallType() != CallType.LOCAL)
                 .mapToDouble(Call::getCost)
                 .sum();
     }
 
-    public double totalAmount() {
-        return localCost() + notLocalCost() + client.getSuscription();
-    }
-
     public void printBill() {
         System.out.println("Client: " + client.getName());
-        System.out.println("Subscription Cost: " + client.getSuscription());
+        System.out.println("Subscription Cost: " + client.getSusbscription());
         System.out.println("Local Calls Cost: " + localCost());
-        System.out.println("Not Local Calls Cost: " + notLocalCost());
+        System.out.println("National and International Calls Cost: " + nationalAndInternationalCost());
         System.out.println("Total Amount: " + totalAmount());
     }
 }

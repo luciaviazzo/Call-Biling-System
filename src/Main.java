@@ -18,7 +18,7 @@ public class Main {
         client.addCall(international1);
         client.addCall(international2);
 
-        Bill bill = new Bill(client);
+        Bill bill = new Bill(client, 4, 2026);
         bill.printBill();
     }
 }
