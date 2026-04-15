@@ -1,13 +1,20 @@
+import java.time.LocalDateTime;
+
 public class NationalCall extends Call{
-    private Locality locality;
+    private double locality;
     
-    public NationalCall(int minutes, CostStrategy costStrategy, Locality locality) {
-        super(minutes, costStrategy);
+    public NationalCall(int minutes, LocalDateTime dateTime, double locality) {
+        super(minutes, dateTime);
         this.locality = locality;
     }
 
-    public Locality getLocality() {
+    public double getLocality() {
         return locality;
+    }
+
+    @Override
+    public double getCost() {
+        return minutes * locality;
     }
 
     @Override

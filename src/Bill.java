@@ -5,6 +5,7 @@ public class Bill {
         this.client = client;
     }
 
+    // no va aca
     public double localCost() {
         return client.getCalls().stream()
                 .filter(call -> call.getCallType() == CallType.LOCAL)
@@ -12,6 +13,7 @@ public class Bill {
                 .sum();
     }
 
+    // no va aca
     public double notLocalCost() {
         return client.getCalls().stream()
                 .filter(call -> call.getCallType() != CallType.LOCAL)
@@ -20,12 +22,12 @@ public class Bill {
     }
 
     public double totalAmount() {
-        return localCost() + notLocalCost() + client.getPass();
+        return localCost() + notLocalCost() + client.getSuscription();
     }
 
     public void printBill() {
         System.out.println("Client: " + client.getName());
-        System.out.println("Pass Cost: " + client.getPass());
+        System.out.println("Subscription Cost: " + client.getSuscription());
         System.out.println("Local Calls Cost: " + localCost());
         System.out.println("Not Local Calls Cost: " + notLocalCost());
         System.out.println("Total Amount: " + totalAmount());

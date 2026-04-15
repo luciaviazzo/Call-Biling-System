@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Client {
     private String name;
-    private double pass;
+    private double suscription;
     private List<Call> calls;
 
-    public Client(String name, double pass) {
+    public Client(String name, double suscription) {
         this.name = name;
-        this.pass = pass;
+        this.suscription = suscription;
         this.calls = new ArrayList<>();
     }
 
@@ -16,8 +16,8 @@ public class Client {
         return name;
     }
 
-    public double getPass() {
-        return pass;
+    public double getSuscription() {
+        return suscription;
     }
 
     public List<Call> getCalls() {
@@ -27,4 +27,5 @@ public class Client {
     public void addCall(Call call) {
         calls.add(call);
     }
+    // las llamadas van aca
 }

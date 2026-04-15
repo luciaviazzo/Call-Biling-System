@@ -1,13 +1,20 @@
-public class InternationalCall extends Call{
-    private Country country;
+import java.time.LocalDateTime;
 
-    public InternationalCall(int minutes, CostStrategy costStrategy, Country country) {
-        super(minutes, costStrategy);
+public class InternationalCall extends Call{
+    private double country;
+
+    public InternationalCall(int minutes, LocalDateTime dateTime, double country) {
+        super(minutes, dateTime);
         this.country = country;
     }
 
-    public Country getCountry() {
+    public double getCountry() {
         return country;
+    }
+
+    @Override
+    public double getCost() {
+        return minutes * country; 
     }
 
     @Override

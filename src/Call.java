@@ -1,19 +1,23 @@
+import java.time.LocalDateTime;
+
 public abstract class Call {
     protected int minutes;
-    protected CostStrategy costStrategy;
+    protected LocalDateTime dateTime;
 
-    public Call(int minutes, CostStrategy costStrategy) {
+    public Call(int minutes, LocalDateTime dateTime) {
         this.minutes = minutes;
-        this.costStrategy = costStrategy;
+        this.dateTime = dateTime;
     }
 
     public int getMinutes() {
         return minutes;
     }
 
-    public double getCost() {
-        return costStrategy.calculateCost(this);
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
+
+    public abstract double getCost();
 
     public abstract CallType getCallType();
 }
