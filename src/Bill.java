@@ -31,7 +31,7 @@ public class Bill {
 
     public double nationalAndInternationalCost() {
         return getCallsOfMonth().stream()
-                .filter(call -> call.getCallType() != CallType.LOCAL)
+                .filter(call -> call.getCallType() == CallType.NATIONAL || call.getCallType() == CallType.INTERNATIONAL)
                 .mapToDouble(Call::getCost)
                 .sum();
     }

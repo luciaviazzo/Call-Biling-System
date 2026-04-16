@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 public class InternationalCall extends Call{
-    private double country;
+    private double country; //Using double to represent the cost per minute for the country for simplicity.
 
     public InternationalCall(int minutes, LocalDateTime dateTime, double country) {
         super(minutes, dateTime);

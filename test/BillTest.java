@@ -6,14 +6,15 @@ public class BillTest {
 
     @Test
     void testMonthlyBillingOnlyCountsCurrentMonth() {
-        Client client = new Client("Test", 10.0);
+        Client client = new Client("Lucia", 10.0);
         Call callApril = new LocalCall(10, LocalDateTime.of(2026, 4, 10, 10, 0));
         Call callMarch = new LocalCall(10, LocalDateTime.of(2026, 3, 10, 10, 0));
+        
         client.addCall(callApril);
         client.addCall(callMarch);
         Bill bill = new Bill(client, 4, 2026);
-        double expected = 10.0 + (10 * 0.20);
-        assertEquals(expected, bill.totalAmount(), 0.001);
+        
+        assertEquals(12.0, bill.totalAmount(), 0.001);
     }
 
     @Test

@@ -34,7 +34,7 @@ public class LocalCallTest {
 
     @Test
     void testLocalCallEdgeStartWorkingHour() {
-        // Monday 8:00 am (start of working hour) -> 0.20/min
+        // Monday 8:00 am 
         LocalCall call = new LocalCall(5, LocalDateTime.of(2026, 4, 13, 8, 0));
         assertEquals(1.0, call.getCost(), 0.001);
     }
